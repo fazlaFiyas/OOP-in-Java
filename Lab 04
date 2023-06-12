@@ -1,0 +1,233 @@
+Practical 04
+
+Exercise 01: 
+Create a class called “Employee” which has 3 private variables (empID, empName, empDesignation) and create getters and setters for each field.
+Please note that this has no main method since this is just a blueprint not an application.
+Now crate a test class to invoke the Employee class.
+Create two objects for Mr.Bogdan and Ms.Bird and set required values using setters and print them back on the console using getters. 
+
+public class Employee 
+{
+    //data
+    private int empID;
+    private String empName;
+    private String empDesignation;
+    
+    //setter method to empID
+    public void setId(int id)
+    {
+        empID=id;
+    }
+    //getter method to empID
+    public int getId()
+    {
+        return empID;
+    }
+    //setter method to empName
+    public void setName(String name)
+    {
+        empName=name;
+    }
+    //getter method to empName
+    public String getName()
+    {
+        return empName;
+    }
+    //setter method to empDesignation
+    public void setDesignation(String d)
+    {
+        empDesignation=d;
+    }
+    //getter method to empDesignation
+    public String getDesignation()
+    {
+        return empDesignation;
+    }
+}
+
+public class Test 
+{
+    public static void main(String[] args) 
+    {
+        Employee e1=new Employee();
+        e1.setId(1234);
+        e1.setName("Mr.Bogdan");
+        e1.setDesignation("HR Manager");
+        System.out.println("Employee id: "+e1.getId());
+        System.out.println("Employee Name: "+e1.getName());
+        System.out.println("Employee Designation: "+e1.getDesignation());
+        
+        System.out.print("\n");
+        Employee e2=new Employee();
+        e2.setId(1256);
+        e2.setName("Ms.Bird");
+        e2.setDesignation("Supervisor");
+        System.out.println("Employee id: "+e2.getId());
+        System.out.println("Employee Name: "+e2.getName());
+        System.out.println("Employee Designation: "+e2.getDesignation());
+    }
+}
+
+Exercise 02:
+Develop the following class execute and discuss the answer: Please note that each class stored in separate files. Write down the answer.
+
+class SuperB {
+    int x;
+    void setIt (int n) { x=n;}
+    void increase () { x=x+1;}
+    void triple () {x=x*3;};
+    int returnIt () {return x;}
+}
+class SubC extends SuperB {
+    void triple () {x=x+3;} // override existing method
+    void quadruple () {x=x*4;} // new method
+}
+public class TestInheritance {
+    public static void main(String[] args) {
+        SuperB b = new SuperB();
+        b.setIt(2);
+        b.increase();
+        b.triple();
+        System.out.println( b.returnIt() ); 
+        SubC c = new SubC();
+        c.setIt(2);
+        c.increase();
+        c.triple();
+        System.out.println( c.returnIt() ); }
+}
+
+Output:
+9
+6
+
+Exercise 03: 
+Recall the following scenario discussed during the class. Develop a code base to represent the scenario.
+Add a test class to invoke Lecturer and Student class by creating at least one object from each.
+Note: All the common attributes and behavior stored in the super class and only the specific fields and behavior stored in subclasses. 
+
+Student
+-	name
+-	id
+-	course
++ setName()/getName()
++ setID()/getID()
++ setCourse()/getCourse()
+
+Lecturer
+-	name
+-	id
+-	programme
++ setName()/getName()
++ setID()/getID()
++ setProg()/getProg()
+
+Person
+Identify field and attributes to be stored in this class
+  
+public class Person 
+{
+    //data
+    private int id;
+    private String name;
+    
+    //setter methods
+    public void setId(int id)
+    {
+        this.id=id;
+    }
+    public void setName(String n)
+    {
+        name=n;
+    }
+    //getter methods
+    public int getId()
+    {
+        return id;
+    }
+    public String getName()
+    {
+        return name;
+    }
+}
+
+public class Students extends Person 
+{
+    //data
+    private String course;
+    
+    //setter methods
+    public void setCourse(String c)
+    {
+        course=c;
+    }
+    //getter methods
+    public String getCourse()
+    {
+        return course;
+    }
+}
+
+
+public class Lecturer extends Person 
+{
+    //data
+    private String programme;
+    
+    //setter methods
+    public void setProgramme(String p)
+    {
+        programme=p;
+    }
+    //getter methods
+    public String getProgramme()
+    {
+        return programme;
+    }
+}
+
+
+public class Test 
+{
+    public static void main(String[] args) 
+    {
+        Students s1=new Students();
+        s1.setId(28921);
+        s1.setName("Fazla Fiyas");
+        s1.setCourse("Java");
+        System.out.println("Student ID: "+s1.getId());
+        System.out.println("Student Name: "+s1.getName());
+        System.out.println("Student Course: "+s1.getCourse());
+        
+        Lecturer L1=new Lecturer();
+        L1.setId(123);
+        L1.setName("Mohomed Shafraz");
+        L1.setProgramme("Programming with Java");
+        System.out.println("Lecturer ID: "+L1.getId());
+        System.out.println("Lecturer Name: "+L1.getName());
+        System.out.println("Lecturer Programme: "+L1.getProgramme());
+    }
+}
+
+Exercise 04
+Develop the following class execute and discuss the answer: Please note that each public class stored in separate files. Write down the answer.
+
+public class Animal {}
+public class Mammal extends Animal {}
+public class Reptile extends Animal {}
+
+public class Dog extends Mammal {
+   public static void main (String args[]){
+      Animal a = new Animal ();
+      Mammal m = new Mammal ();
+      Dog d = new Dog ();
+      System.out.println(m instanceof Animal);
+      System.out.println(d instanceof Mammal);
+      System.out.println(d instanceof Animal);
+   }
+}
+
+Output:
+true
+true
+true
+
